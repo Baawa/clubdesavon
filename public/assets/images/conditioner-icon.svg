@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="200px" height="200px" viewBox="0 0 200 200" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 42 (36781) - http://www.bohemiancoding.com/sketch -->
+    <title>conditioner-icon</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <path d="M-7.10542736e-15,0 C7.01088493e-15,0 8,1 25,1 C42,1 50,0 50,0 C50,17 42,17 42,17 L10,17 C10,17 -7.10542736e-15,17 -7.10542736e-15,0 Z" id="path-1"></path>
+        <rect id="path-3" x="11" y="22" width="42" height="11" rx="1"></rect>
+        <mask id="mask-4" maskContentUnits="userSpaceOnUse" maskUnits="objectBoundingBox" x="0" y="0" width="42" height="11" fill="white">
+            <use xlink:href="#path-3"></use>
+        </mask>
+        <rect id="path-5" x="11" y="38" width="42" height="64" rx="1"></rect>
+        <mask id="mask-6" maskContentUnits="userSpaceOnUse" maskUnits="objectBoundingBox" x="0" y="0" width="42" height="64" fill="white">
+            <use xlink:href="#path-5"></use>
+        </mask>
+    </defs>
+    <g id="exportables" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="conditioner-icon">
+            <circle id="Oval-3" fill="#A2A2A2" cx="100" cy="100" r="100"></circle>
+            <g id="conditioner" transform="translate(69.000000, 25.000000)">
+                <path d="M1,12 C-2,128 6,128 6,128 L57,128 C57,128 65,128 62,12 C62,12 57,-2.84217094e-14 31.5,-2.84217094e-14 C6,-2.18713936e-14 1,12 1,12 Z" id="Path-25" stroke="#FFFFFF" stroke-width="4"></path>
+                <g id="kork" transform="translate(7.000000, 134.000000)">
+                    <path d="M-7.10542736e-15,0 C7.01088493e-15,0 8,1 25,1 C42,1 50,0 50,0 C50,17 42,17 42,17 L10,17 C10,17 -7.10542736e-15,17 -7.10542736e-15,0 Z" id="Path-26" stroke="#FFFFFF" stroke-width="4"></path>
+                    <g id="Path-27">
+                        <mask id="mask-2" fill="white">
+                            <use xlink:href="#path-1"></use>
+                        </mask>
+                        <use id="Mask" stroke="#FFFFFF" stroke-width="4" xlink:href="#path-1"></use>
+                        <path d="M8,17 C13,15 16.5,8 25,8 C33.5,8 37,15 42,17 C42,17 11,17 8,17 Z" stroke="#FFFFFF" stroke-width="3" mask="url(#mask-2)"></path>
+                    </g>
+                </g>
+                <use id="Rectangle" stroke="#FFFFFF" mask="url(#mask-4)" stroke-width="8" xlink:href="#path-3"></use>
+                <use id="Rectangle-2" stroke="#FFFFFF" mask="url(#mask-6)" stroke-width="8" xlink:href="#path-5"></use>
+            </g>
+        </g>
+    </g>
+</svg>

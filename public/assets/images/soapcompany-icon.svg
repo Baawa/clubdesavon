@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="200px" height="184px" viewBox="0 0 200 184" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 42 (36781) - http://www.bohemiancoding.com/sketch -->
+    <title>icon</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="icon" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g stroke="#fff">
+            <circle id="Oval-4" stroke-width="4" cx="100" cy="92" r="70"></circle>
+            <path d="M94,60 L94,72 L69,72 L69,75.9230769 L70.2352941,75.9230769 C70.2352941,75.9230769 69.6176471,85.1538462 73.9411765,91 C77.9895577,91 83.3537341,91 89.1843322,91 L89.2333333,107 L49,107 L49,112 L51,112 C51,112 50,125 57,133 C79,133 125,133 143,133 C149.404359,127.396186 149,112 149,112 L151,112 L151,107 L111,107 L111,91 C118.75583,91 123.697674,91 127.058824,91 C131.014457,86.9049052 130.764706,75.6538462 130.764706,75.6538462 L132,75.6538462 L132,72 L106,72 L106,60 C110.805168,60 113.922481,60 116.019608,60 C118.405545,58.0602182 118.254902,52.7307692 118.254902,52.7307692 L119,52.7307692 L119,51 L81,51 L81,52.7299957 L81.745098,52.7299957 C81.745098,52.7299957 81.372549,57.2307692 83.9803922,60 C86.5435477,60 89.9811479,60 93.7006861,60 Z" id="fountain" stroke-width="3"></path>
+            <g id="water" transform="translate(76.000000, 38.000000)">
+                <g id="Group">
+                    <path d="M7,33 L7,70" id="Path-3" stroke-width="2"></path>
+                    <path d="M1,33 L1,70" id="Path-4" stroke-width="3"></path>
+                    <path d="M11,12 L11,33" id="Path-5" stroke-width="3"></path>
+                    <path d="M15,12 L15,33" id="Path-6" stroke-width="2"></path>
+                    <path d="M11,12 C11,12 11,9 11,5 C11,1 14,3.33066907e-16 17.5,0 C21,0 24,1 24,5 C24,9 24,12 24,12" id="Path-7" stroke-width="3"></path>
+                    <path d="M15,12 C15,12 15,10.5 15,8.5 C15,6.5 17.0769231,6 19.5,6 C21.9230769,6 24,6.5 24,8.5 C24,10.5 24,12 24,12" id="Path-7-Copy" stroke-width="2"></path>
+                </g>
+                <g id="Group-Copy" transform="translate(36.000000, 35.000000) scale(-1, 1) translate(-36.000000, -35.000000) translate(24.000000, 0.000000)">
+                    <path d="M7,33 L7,70" id="Path-3" stroke-width="2"></path>
+                    <path d="M1,33 L1,70" id="Path-4" stroke-width="3"></path>
+                    <path d="M11,12 L11,33" id="Path-5" stroke-width="3"></path>
+                    <path d="M15,12 L15,33" id="Path-6" stroke-width="2"></path>
+                    <path d="M11,12 C11,12 11,9 11,5 C11,1 14,3.33066907e-16 17.5,0 C21,0 24,1 24,5 C24,9 24,12 24,12" id="Path-7" stroke-width="3"></path>
+                    <path d="M15,12 C15,12 15,10.5 15,8.5 C15,6.5 17.0769231,6 19.5,6 C21.9230769,6 24,6.5 24,8.5 C24,10.5 24,12 24,12" id="Path-7-Copy" stroke-width="2"></path>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

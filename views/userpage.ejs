@@ -1,0 +1,200 @@
+<% if (typeof assetpath === 'undefined') { assetpath = '' } %>
+<!doctype html>
+<html lang="en">
+<head>
+  <% include partials/head %>
+  <% include partials/header %>
+	<link rel="stylesheet" type="text/css" href="<%= assetpath %>assets/css/user.css">
+
+
+</head>
+<body>
+
+
+  <div class="container">
+
+    <div class="in-row">
+      <h1>Welcome to <%= found_user.name %>!</h1>
+      <% if (user.admin && !found_user.admin) { %>
+
+        <form id="banForm" action="javascript:void(0);">
+          <input name="found_user_id" type="hidden" value="<%= found_user.id %>"/>
+          <button class="btn ban-btn" onclick="postForm('#banForm', '/ban', '/')">Ban User</button>
+        </form>
+
+      <% } %>
+    </div>
+    <hr>
+
+    <% if (user.id == found_user.id){ %>
+      <form id="pictureForm" class="img-form" action="javascript:void(0);">
+      <h2>Change Profile Picture</h2>
+        <div class="form-group">
+            <input
+                  type="url"
+                  name="image"
+                  required="true"
+                  placeholder="Image Url..."
+                  class="form-control user-input">
+        </div>
+
+        <button class="btn green-btn" onclick="postForm('#pictureForm', '/userpage', '/userpage')">Change Picture</button>
+      </form>
+
+      <hr>
+    <% } %>
+
+
+  	  <h2>Favorite Threads</h2>
+  	  <table id="posts-table" class="table table-hover">
+  	    <thead class="thead-light" data-events="postEvents">
+  	      <th scope="col" data-field="id" data-visible="false">Id</th>
+  	      <th scope="col" data-field="title" data-sortable="true">Title</th>
+  	      <th scope="col" data-field="created" data-sortable="true">Created</th>
+  	      <th scope="col" data-field="favorite" data-sortable="false" data-width=20px data-align='center' data-halign='center'></th>
+  	    </thead>
+  	    <tbody>
+  	      <% if (typeof posts !== 'undefined') { %>
+  	        <% posts.forEach(function(post) { %>
+  	          <tr>
+  	            <% if (post.favorite){ %>
+  		            <td><%= post.id %></td>
+  		            <td><%= post.title %></td>
+  		            <td><%= post.date %></td>
+  	              <td class="text-warning"><i class="fas fa-star"></i></td>
+  	            <% } else{ %>
+  	              <td class="text-secondary"><i class="far fa-star"></i></td>
+  	            <% } %>
+  	          </tr>
+  	        <% }); %>
+  	      <% } %>
+  	    </tbody>
+  	  </table>
+
+      <hr>
+
+    <h2>Commented Threads</h2>
+      <table id="posts-table2" class="table table-hover">
+        <thead class="thead-light" data-events="postEvents">
+          <th scope="col" data-field="id" data-visible="false">Id</th>
+          <th scope="col" data-field="title" data-sortable="true">Title</th>
+          <th scope="col" data-field="created" data-sortable="true" data-width=160px>Created</th>
+          <th scope="col" data-field="favorite" data-sortable="false" data-width=20px data-align='center' data-halign='center'></th>
+        </thead>
+        <tbody>
+          <% if (typeof posts !== 'undefined') { %>
+            <% sub_posts.forEach(function(sub_posts) { %>
+              <tr>
+                <% if (sub_posts.user_id == found_user.id && sub_posts.parent_id != null) { %>
+                  <% posts.forEach(function(post) { %>
+                    <% if (sub_posts.parent_id == post.id) { %>
+                      <tr>
+                      <td><%= post.id %></td>
+                      <td><%= post.title %></td>
+                      <td><%= post.date %></td>
+                      <% if (post.favorite){ %>
+                        <td class="text-warning"><i class="fas fa-star"></i></td>
+                      <% } else{ %>
+                        <td class="text-secondary"><i class="far fa-star"></i></td>
+                      <% } %>
+                    </tr>
+                    <% } %>
+                  <% }); %>
+                <% } %>
+            </tr>
+          <% }); %>
+        <% } %>
+      </tbody>
+    </table>
+
+  </div>
+
+  <script>
+  function getSelectedPost(id) {
+    window.location = "/post/" + id;
+  }
+
+  function createPostsTable() {
+    var $table = $('#posts-table');
+
+    $table.on('click-row.bs.table', function (e, row, $element) {
+      getSelectedPost(row.id);
+    });
+
+    $table.bootstrapTable({
+      toolbar: ".toolbar",
+      clickToSelect: false,
+      showRefresh: false,
+      search: false,
+      showToggle: false,
+      showColumns: false,
+      pagination: false,
+      searchAlign: 'right',
+      formatShowingRows: function(pageFrom, pageTo, totalRows){
+        //do nothing here, we don't want to show the text "showing x of y from..."
+      },
+      formatRecordsPerPage: function(pageNumber){
+        return pageNumber + " rows visible";
+      },
+      icons: {
+        refresh: 'fa fa-refresh',
+        toggle: 'fa fa-th-list',
+        columns: 'fa fa-columns',
+        detailOpen: 'fa fa-plus-circle',
+        detailClose: 'fa fa-minus-circle'
+      }
+    });
+
+    $(window).resize(function () {
+      $table.bootstrapTable('resetView');
+    });
+  }
+
+  $().ready(createPostsTable());
+
+
+  function createPostsTable2() {
+    var $table = $('#posts-table2');
+
+    $table.on('click-row.bs.table', function (e, row, $element) {
+      getSelectedPost(row.id);
+    });
+
+    $table.bootstrapTable({
+      toolbar: ".toolbar",
+      clickToSelect: false,
+      showRefresh: false,
+      search: false,
+      showToggle: false,
+      showColumns: false,
+      pagination: false,
+      searchAlign: 'right',
+      formatShowingRows: function(pageFrom, pageTo, totalRows){
+        //do nothing here, we don't want to show the text "showing x of y from..."
+      },
+      formatRecordsPerPage: function(pageNumber){
+        return pageNumber + " rows visible";
+      },
+      icons: {
+        refresh: 'fa fa-refresh',
+        toggle: 'fa fa-th-list',
+        columns: 'fa fa-columns',
+        detailOpen: 'fa fa-plus-circle',
+        detailClose: 'fa fa-minus-circle'
+      }
+    });
+
+    $(window).resize(function () {
+      $table.bootstrapTable('resetView');
+    });
+  }
+
+  $().ready(createPostsTable2());
+
+  </script>
+
+
+
+</body>
+<% include partials/footer %>
+</html>

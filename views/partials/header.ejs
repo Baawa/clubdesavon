@@ -1,0 +1,20 @@
+<div class="header w-100 d-flex flex-row justify-content-end p-2">
+  <a class="mr-4" href="/">Start</a>
+  <a class="mr-4" href="/products">Products</a>
+  <div class="dropdown">
+  <a id="dLabel" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    <i class="fas fa-shopping-basket"></i>
+  </a>
+  <div class="dropdown-menu" aria-labelledby="dLabel">
+    <p>content goes here</p>
+    <% include shopping-bag %>
+  </div>
+</div>
+</div>
+<div class="top-element d-flex flex-column justify-content-center align-items-center ml-0 mr-0 w-100 pl-0 pr-0" style="background-image: url('<%= assetpath %>assets/images/shop-header-image.jpeg');">
+  <div class="inner d-flex flex-column align-items-center">
+    <img src="<%= assetpath %>assets/images/soapcompany-icon.svg"/>
+    <h2>Club de Savón</h2>
+    <p>- the club for proper hair care.</p>
+  </div>
+</div>

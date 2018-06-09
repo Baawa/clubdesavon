@@ -1,0 +1,73 @@
+<%
+if (typeof assetpath === 'undefined') { assetpath = ''; }
+if (typeof type === 'undefined') {type = 0;}
+%>
+<!doctype html>
+<html lang="en">
+<head>
+	<% include partials/head %>
+
+  <!-- meta tags -->
+  <title>Products - Club de Savón</title>
+</head>
+<body>
+	<% include partials/header %>
+  <!-- product header -->
+  <div class="products-header w-100 d-flex flex-row justify-content-center pt-4 pb-4">
+    <div class="d-flex flex-column">
+      <h1>Products</h1>
+      <p>Here you can buy top-in-line hair care products in order to maintain the best possible hair quality. When you have selected your products, click "continue" to proceed to the check-out.</p>
+    </div>
+    <img src="<%= assetpath %>assets/images/shampoo-bottles.png"/>
+  </div>
+  <!-- menu bar -->
+  <div class="menu-bar w-100 d-flex flex-row justify-content-center align-items-center pt-4 pb-4">
+    <a href="/products/1" class="item d-flex flex-row align-items-center mr-4 ml-4">
+      <% if (type == 1){ %>
+        <img src="<%= assetpath %>assets/images/shampoo-icon-active.svg"/>
+        <h4 class="active p-0 m-0 ml-2">Shampoo</h4>
+      <% }else{ %>
+        <img src="<%= assetpath %>assets/images/shampoo-icon.svg"/>
+        <h4 class="p-0 m-0 ml-2">Shampoo</h4>
+      <% } %>
+    </a>
+    <a href="/products/2" class="item d-flex flex-row align-items-center mr-4 ml-4">
+      <% if (type == 2){ %>
+        <img src="<%= assetpath %>assets/images/conditioner-icon-active.svg"/>
+        <h4 class="active p-0 m-0 ml-2">Conditioner</h4>
+      <% }else{ %>
+        <img src="<%= assetpath %>assets/images/conditioner-icon.svg"/>
+        <h4 class="p-0 m-0 ml-2">Conditioner</h4>
+      <% } %>
+    </a>
+    <a href="/products/3" class="item d-flex flex-row align-items-center mr-4 ml-4">
+      <% if (type == 3){ %>
+        <img src="<%= assetpath %>assets/images/treatment-icon-active.svg"/>
+        <h4 class="active p-0 m-0 ml-2">Treatment</h4>
+      <% }else{ %>
+        <img src="<%= assetpath %>assets/images/treatment-icon.svg"/>
+        <h4 class="p-0 m-0 ml-2">Treatment</h4>
+      <% } %>
+    </a>
+  </div>
+
+  <!-- Products -->
+  <div class="products w-100 d-flex flex-row flex-wrap justify-content-around pt-4 pb-4">
+    <% if (typeof products !== 'undefined') { %>
+      <% products.forEach(function(product) { %>
+        <div class="item d-flex flex-column align-items-center">
+          <div class="icon d-flex flex-row align-items-center justify-content-center">
+            <img class="m-0 p-0" src="<%= assetpath %>assets/images/<%= product.image %>"/>
+          </div>
+          <h4><%= product.name %></h4>
+          <p><%= product.price %> SEK</p>
+          <a href="/product/<%= product.id %>">Visa produkt</a>
+        </div>
+      <% }); %>
+    <% }else{ %>
+      <p>No products found.</p>
+    <% } %>
+  </div>
+</body>
+<% include partials/footer %>
+</html>

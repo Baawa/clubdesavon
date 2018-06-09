@@ -1,0 +1,41 @@
+<% if (typeof assetpath === 'undefined') { assetpath = '' } %>
+<!doctype html>
+<html lang="en">
+<head>
+  <% include partials/head %>
+  <% include partials/header %>
+  <link rel="stylesheet" type="text/css" href="<%= assetpath %>assets/css/about.css">
+
+
+</head>
+  <body>
+
+
+    <div class="container">
+      <div class="first-text">
+        <div>
+          <h2> What's Localhost8081 Forum?<h2>
+
+          <p id="about-text"> Localhost8081 Forum is one of the best forum's in the world. It keeps your identity safe, doesn't use cookies other than what's necessary to keep you logged in and has won many awards such as Free speech Award and Nobel Prize. In the modern world it's easy to forget how important free speech is and since we live in a digital world where every thing in the internet is written in ink, here you can speak what you really blieve without having to fight social warriors.</p>
+        </div>
+
+        <img src="<%= assetpath %>assets/images/inspPic.jpg" class="insp-pic">
+      </div>
+      <hr>
+
+
+    <div class="first-text">
+        <div>
+          <h2> The creators?<h2>
+
+          <p id="about-us-text"> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean neque justo, elementum eu varius et, iaculis nec ex. Suspendisse sagittis sapien a commodo malesuada. Quisque at justo mauris. Vestibulum condimentum metus ut sapien aliquam pellentesque. Etiam sodales mollis aliquet. Cras vel lobortis magna, a gravida diam. Maecenas sed nisl nisi. In dictum non quam eu consectetur. Nullam vel pretium quam, eget eleifend urna. Morbi neque turpis, suscipit in fermentum ut, ullamcorper eget tortor. Cras tincidunt in orci ut feugiat. Nunc sapien tellus, interdum ac pellentesque id, vulputate a velit. Vestibulum tincidunt in nunc in fermentum. Vestibulum vehicula, tellus non varius pharetra, nulla ante varius purus, ut scelerisque tellus nunc eget elit.</p>
+        </div>
+
+        <img src="<%= assetpath %>assets/images/picOnUs.jpg" class="insp-pic">
+      </div>
+      <hr>
+    </div>
+  </div>
+  </body>
+  <% include partials/footer %>
+</html>

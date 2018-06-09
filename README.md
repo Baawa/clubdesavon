@@ -1,2 +1,3 @@
-# clubdesavon
-A demo of a website for a soap company.
+# Soap company
+
+A demo website for a soap company 👍

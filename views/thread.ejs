@@ -1,0 +1,117 @@
+<% if (typeof assetpath === 'undefined') { assetpath = '' } %>
+<!doctype html>
+<html lang="en">
+<head>
+	<% include partials/head %>
+	<link rel="stylesheet" type="text/css" href="<%= assetpath %>assets/css/threads.css">
+</head>
+<body>
+	<% include partials/header %>
+
+	<div class="container">
+		<div>
+	    <h4 class="post-title white-font rounded"><%= post.title %></h4>
+			<p class="text-muted"><%= post.date %></p>
+	    <p class="lead"><%= post.text %></p>
+
+			<div class="d-flex flex-row justify-content-start align-items-center">
+				<div style="height: 1rem;"><p style="line-height: 1rem;"><b>Posted by: </b></p></div>
+				<div><a id="name-<%= post.id %>" href="/userpage/<%= post.user_id %>" style="height: 1rem;"></a>
+				</div>
+				<img id="image-<%= post.id %>" src="" class="bg-secondary rounded-circle" style="height: 30px; width: 30px;"/>
+		  </div>
+
+			<form id="starForm" action="javascript:void(0);">
+				<input name="post_id" type="hidden" value="<%= post.id %>"/>
+
+
+				<% if (post.favorite){ %>
+					<input name="decrease" type="hidden" value="1"/>
+					<button class="btn btn-warning" data-toggle="tooltip" title="Unfavorite" onclick="postForm('#starForm', '/favorite/', '/post/<%= post.id %>')">
+						<i class="fas fa-star"></i>
+					</button>
+					<%= post.number_of_favorite %>
+				<% } else{ %>
+					<button class="btn btn-secondary" data-toggle="tooltip" title="Favorite" onclick="postForm('#starForm', '/favorite/', '/post/<%= post.id %>')">
+						<i class="far fa-star"></i>
+					</button>
+					<%= post.number_of_favorite %>
+				<% } %>
+			</form>
+
+			<% if (user.admin && !post.locked){ %>
+				<form id="lockForm" action="javascript:void(0);">
+					<input name="post_id" type="hidden" value="<%= post.id %>"/>
+					<button class="btn btn-dark" onclick="postForm('#lockForm', '/post/lock', '/post/<%= post.id %>')">
+						<i class="fas fa-lock"></i>
+					</button>
+				</form>
+			<% } %>
+	  </div>
+
+		<h4 class="border-bottom border-dark">Comments</h4>
+		<ul class="list-group">
+			<% if (typeof sub_posts !== 'undefined') { %>
+				<% sub_posts.forEach(function(spost) { %>
+					<li class="list-group-item thread-lightgray">
+						<h6><%= spost.title %></h6>
+						<p class="text-muted"><%= spost.date %></p>
+				    <p><%= spost.text %></p>
+
+
+						<div class="d-flex flex-row justify-content-start align-items-center">
+							<div><a id="name-<%= spost.id %>" href="/userpage/<%= spost.user_id %>" style="height: 1rem;"></a></div>
+					    <img id="image-<%= spost.id %>" src="" class="bg-secondary rounded-circle" style="height: 30px; width: 30px;"/>
+					  </div>
+					</li>
+				<% }); %>
+			<% } %>
+		</ul>
+
+		<% if (!post.locked){ %>
+			<h4>Comment</h4>
+			<form id="commentForm" action="javascript:void(0);">
+				<input name="title" type="hidden" value="Re: <%= post.title %>"/>
+				<input name="parent_id" type="hidden" value="<%= post.id %>"/>
+
+		    <div class="form-group">
+		      <textarea class="form-control"
+		                name="text"
+		                rows="3"
+		                placeholder="E.g. I loved your post, brah"
+										required></textarea>
+		    </div>
+
+		    <button class="btn btn-light" onclick="postForm('#commentForm', '/post/new', '/post/<%= post.id %>')">Add comment</button>
+		  </form>
+		<% } %>
+	</div>
+
+</body>
+<script>
+
+function getUserInfo(id, name_id, image_id){
+	get('/user/' + id, [], function(data){
+		$('#' + name_id).html(data.user.name);
+		if (data.user.image == null || data.user.image == "") {
+			$('#' + image_id).attr('src', "<%= assetpath %>assets/images/kappa.png");
+		} else{
+			$('#' + image_id).attr('src', data.user.image);
+		}
+	}, function(error){
+		console.log(error);
+	});
+}
+
+getUserInfo("<%= post.user_id %>", "name-<%= post.id %>", "image-<%= post.id %>");
+
+<% if (typeof sub_posts !== 'undefined') { %>
+	<% sub_posts.forEach(function(spost) { %>
+		getUserInfo("<%= spost.user_id %>", "name-<%= spost.id %>", "image-<%= spost.id %>");
+	<% }); %>
+<% } %>
+
+
+</script>
+<% include partials/footer %>
+</html>

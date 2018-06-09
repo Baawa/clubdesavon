@@ -1,0 +1,45 @@
+<% if (typeof assetpath === 'undefined') { assetpath = '' } %>
+<!doctype html>
+<html lang="en">
+<head>
+	<% include partials/head %>
+
+	<style>
+		.ex1 {
+	margin: 10px;
+}
+	</style>
+</head>
+<body>
+	<% include partials/header %>
+
+	<div class="container">
+		<form id="newPostForm" action="javascript:void(0);">
+	    <div class="form-group">
+	        <label class="ex1 control-label">Title</label>
+	        <input
+	              name="title"
+	              type="text"
+	              required="true"
+	              placeholder="Name..."
+	              class="ex1 form-control">
+	    </div>
+
+	    <div class="form-group">
+	      <label class="ex1 control-label">Text</label>
+	      <textarea class="ex1 form-control"
+	                name="text"
+	                rows="3"
+	                placeholder="E.g. My first forum thread"
+									required
+	                ></textarea>
+	    </div>
+
+	    <button class="ex1 btn btn-success" onclick="postForm('#newPostForm', '/post/new', '/')">Start thread</button>
+			<a href="/" class="btn btn-light" >Cancel</a>
+	  </form>
+	</div>
+	<% include partials/footer %>
+
+</body>
+</html>

@@ -1,0 +1,75 @@
+<div class="container">
+  <h2>Threads</h2>
+  <div class="clearfix">
+    <a class="btn btn-primary float-right" href="/post/new">New thread</a>
+  </div>
+  <table id="posts-table" class="table table-hover">
+    <thead class="thead-light" data-events="postEvents">
+      <th scope="col" data-field="id" data-visible="false">Id</th>
+      <th scope="col" data-field="title" data-sortable="true">Title</th>
+      <th scope="col" data-field="created" data-sortable="true" data-width=160px>Created</th>
+      <th scope="col" data-field="favorite" data-sortable="false" data-width=20px data-align='center' data-halign='center'></th>
+    </thead>
+    <tbody>
+      <% if (typeof posts !== 'undefined') { %>
+        <% posts.forEach(function(post) { %>
+          <tr>
+            <td><%= post.id %></td>
+            <td><%= post.title %></td>
+            <td><%= post.date %></td>
+            <% if (post.favorite){ %>
+              <td class="text-warning"><i class="fas fa-star"></i></td>
+            <% } else{ %>
+              <td class="text-secondary"><i class="far fa-star"></i></td>
+            <% } %>
+          </tr>
+        <% }); %>
+      <% } %>
+    </tbody>
+  </table>
+</div>
+
+<script>
+function getSelectedPost(id) {
+  window.location = "/post/" + id;
+}
+
+function createPostsTable() {
+  var $table = $('#posts-table');
+
+  $table.on('click-row.bs.table', function (e, row, $element) {
+    getSelectedPost(row.id);
+  });
+
+  $table.bootstrapTable({
+    toolbar: ".toolbar",
+    clickToSelect: false,
+    showRefresh: false,
+    search: true,
+    showToggle: false,
+    showColumns: false,
+    pagination: false,
+    searchAlign: 'right',
+    formatShowingRows: function(pageFrom, pageTo, totalRows){
+      //do nothing here, we don't want to show the text "showing x of y from..."
+    },
+    formatRecordsPerPage: function(pageNumber){
+      return pageNumber + " rows visible";
+    },
+    icons: {
+      refresh: 'fa fa-refresh',
+      toggle: 'fa fa-th-list',
+      columns: 'fa fa-columns',
+      detailOpen: 'fa fa-plus-circle',
+      detailClose: 'fa fa-minus-circle'
+    }
+  });
+
+  $(window).resize(function () {
+    $table.bootstrapTable('resetView');
+  });
+}
+
+$().ready(createPostsTable());
+
+</script>
